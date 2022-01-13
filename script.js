@@ -3,63 +3,29 @@ if (typeof document !== 'undefined') {
     // will run in client's browser only
     body = document.getElementsByTagName("body")[0];
     var answer = document.getElementById("inptext");
-    var list = document.getElementById("memory-list");
     var list1 = document.getElementById("history-list");
-    var memoryRegister = [];
     var HistoryRegister = [];
+    var num1;
+    var strtonum = function () {
+        return num1 = parseInt(answer.value);
+    };
     //taking input and showing the numbers 1-10 and operators such as pi , e , mod etc from button
-    var calculate = function (number) {
-        if (answer.value === "") {
-            if (isNaN(number)) {
-                if (number == "-" || number == "(") {
-                    return answer.value += number;
-                }
-            }
-            else {
-                return answer.value += number;
-            }
-        }
-        else {
-            var ch = answer.value;
-            ch = String(ch);
-            ch = ch.slice(-1);
-            if (isNaN(ch)) {
-                if (isNaN(number)) {
-                    var calch = answer.value;
-                    calch = calch.substring(0, calch.length - 1);
-                    answer.value = calch;
-                    return answer.value += number;
-                }
-                else {
-                    return answer.value += number;
-                }
-            }
-            else {
-                return answer.value += number;
-            }
-        }
+    var calculate = function (op) {
+        answer.value += op;
     };
     // equal operator
     var Answer = function () {
-        //condition checks the value contains ^ if yes then it will perform x^y
-        if (answer.value.includes("^")) {
-            var temp = answer.value;
-            var x = temp.split("^")[0];
-            var y = temp.substring(temp.indexOf("^") + 1);
-            return answer.value = Math.pow(x, y);
-        }
         var ansch = answer.value;
-        ansch = String(ansch);
         var anschnew = ansch.slice(-1);
         var numberbefore;
-        if (isNaN(anschnew)) {
+        if (isNaN(parseFloat(anschnew))) {
             ansch = ansch.substring(0, ansch.length - 1);
             numberbefore = ansch;
         }
         else {
             numberbefore = answer.value;
         }
-        document.getElementById("sm").innerHTML=numberbefore; // displaying operations
+        document.getElementById("sm").innerHTML = numberbefore; // displaying operations
         answer.value = eval(numberbefore); // for calculating basic math operations
         var numberafter = answer.value;
         var num = numberbefore + '=' + numberafter;
@@ -78,10 +44,11 @@ if (typeof document !== 'undefined') {
     //backspace / delete function
     var del = function () { return answer.value = answer.value.slice(0, -1); };
     //square root function
-    var sqrt = function () { return answer.value = Math.sqrt(answer.value); };
+    var sqrt = function () { strtonum(); return answer.value = (Math.sqrt(num1)).toString(); };
     //factorial function
     var fact = function () {
-        var n = answer.value;
+        strtonum();
+        var n = num1;
         var facto = 1;
         if (n == 0 || n == 1) {
             facto = 1;
@@ -91,124 +58,100 @@ if (typeof document !== 'undefined') {
                 facto = facto * i;
             }
         }
-        return answer.value = facto;
+        return answer.value = facto.toString();
     };
     //function radian to degree
     var Deg = function () {
-        var rad = answer.value;
+        strtonum();
+        var rad = num1;
         var deg = (rad * 180) / 3.14;
-        return answer.value = deg;
+        return answer.value = deg.toString();
     };
     //function Farenhiet to celcius
     var f_e = function () {
-        var cel = answer.value;
+        strtonum();
+        var cel = num1;
         var far = cel * 1.8 + 32;
-        return answer.value = far;
+        return answer.value = far.toString();
     };
     //function square
-    var square = function () { return answer.value = Math.pow(answer.value, 2); };
+    var square = function () { strtonum(); return answer.value = (Math.pow(num1, 2)).toString(); };
     //function logarithm
-    var log = function () { return answer.value = Math.LOG10E; };
+    var log = function () { strtonum(); return answer.value = Math.LOG10E.toString(); };
     //function ln
-    var ln = function () { return answer.value = Math.log; };
+    var ln = function () { strtonum(); return answer.value = Math.log.toString(); };
     //function 10pow x
-    var powx = function () { return answer.value = Math.pow(10, answer.value); };
+    var powx = function () { strtonum(); return answer.value = Math.pow(10, num1).toString(); };
     //function exp
-    var exp = function () { return answer.value = Math.exp(answer.value); };
+    var exp = function () { strtonum(); return answer.value = Math.exp(num1).toString(); };
     // function sin
-    var sin = function () { return answer.value = Math.sin(answer.value); };
+    var sin = function () { strtonum(); return answer.value = Math.sin(num1).toString(); };
     // function tan
-    var tan = function () { return answer.value = Math.tan(answer.value); };
+    var tan = function () { strtonum(); return answer.value = Math.tan(num1).toString(); };
     // function cos
-    var cos = function () { return answer.value = Math.cos(answer.value); };
+    var cos = function () { strtonum(); return answer.value = Math.cos(num1).toString(); };
     // function asin
-    var asin = function () { return answer.value = Math.asin(answer.value); };
+    var asin = function () { strtonum(); return answer.value = Math.asin(num1).toString(); };
     // function acos
-    var acos = function () { return answer.value = Math.acos(answer.value); };
+    var acos = function () { strtonum(); return answer.value = Math.acos(num1).toString(); };
     // function atan
-    var atan = function () { return answer.value = Math.atan(answer.value); };
+    var atan = function () { strtonum(); return answer.value = Math.atan(num1).toString(); };
     // function floor
-    var floor = function () { return answer.value = Math.floor(answer.value); };
+    var floor = function () { strtonum(); return answer.value = Math.floor(num1).toString(); };
     // function ceil
-    var ceil = function () { return answer.value = Math.ceil(answer.value); };
+    var ceil = function () { strtonum(); return answer.value = Math.ceil(num1).toString(); };
     //function random
-    var random = function () { return answer.value = Math.random(); };
+    var random = function () { strtonum(); return answer.value = Math.random().toString(); };
     //function abs=>| x |
-    var abs = function () { return answer.value = Math.abs(answer.value); };
+    var abs = function () { strtonum(); return answer.value = Math.abs(num1).toString(); };
     //function reciprocal
-    var reciprocal = function () { return answer.value = 1 / answer.value; };
+    var reciprocal = function () { strtonum(); return answer.value = (1 / num1).toString(); };
     // function x^3
-    var xpow3 = function () { return answer.value = Math.pow(answer.value, 3); };
+    var xpow3 = function () { strtonum(); return answer.value = Math.pow(num1, 3).toString(); };
     // function 2^x
-    var powof2x = function () { return answer.value = Math.pow(2, answer.value); };
+    var powof2x = function () { strtonum(); return answer.value = Math.pow(2, num1).toString(); };
     // function of +/-
-    var pm = function () { return answer.value = -answer.value; };
-    //function for memory button to toggle and show the memory
-    var Memory = function () {
-        var div = document.getElementsByClassName('show').item(0);
-        if (div.style.display == 'block') {
-            div.style.display = 'none';
-        }
-        else {
-            div.style.display = 'block';
-        }
-    };
-    //function for history button to toggle and show the history
-    void history;
-    (function () {
-        var div = document.getElementsByClassName('show1').item(0);
-        if (div.style.display == 'block') {
-            div.style.display = 'none';
-        }
-        else {
-            div.style.display = 'block';
-        }
-    });
+    var pm = function () { strtonum(); return answer.value = (-num1).toString(); };
+    var ms = [];
+    var index = 0;
     // function memory save
     var MemorySave = function () {
-        var num = answer.value;
-        memoryRegister.push(num); //pushes the elements in array
-        list.innerHTML = '';
-        memoryRegister.forEach(function (element) {
-            list.innerHTML += '<li>' + element + '</li>'; //prints element in memory block
-        });
+        ms.push(parseInt(answer.value));
+        answer.value = "";
     };
-    //function memory plus
+    //function memory plus (M+)
     var memoryplus = function () {
-        var num = answer.value;
-        var lastvalue = list.lastChild.innerHTML; // takes last element of list and stores in lastvalue
-        var ans = parseInt(lastvalue) + parseInt(num); //adds the last item in memory and the number
-        memoryRegister.pop(lastvalue); //pops out the lastvalue in array
-        memoryRegister.push(ans); //pushes the elements in array
-        list.innerHTML = '';
-        memoryRegister.forEach(function (element) {
-            list.innerHTML += '<li>' + element + '</li>'; //prints element in memory block
-        });
+        if (ms.length == 0) {
+            alert("Nothing is stored in memory");
+        }
+        else {
+            var sum = ms.reduce(function (num12, num2) {
+                return num12 + num2;
+            }, 0);
+            return answer.value = String(sum);
+        }
     };
     //function memory minus
     var memoryminus = function () {
-        var num = answer.value;
-        var lastvalue = list.lastChild.innerHTML; // takes last element of list and stores in lastvalue
-        var ans = parseInt(lastvalue) - parseInt(num); //substracts the last item in memory and the number
-        memoryRegister.pop(lastvalue); //pops out the lastvalue in array
-        memoryRegister.push(ans); //pushes the elements in array
-        list.innerHTML = '';
-        memoryRegister.forEach(function (element) {
-            list.innerHTML += '<li>' + element + '</li>'; //prints element in memory block
-        });
+        if (ms.length == 0) {
+            alert("Nothing is stored in memory");
+        }
     };
-    //function memory recall
+    //function memory recall 
     var memoryrecall = function () {
-        return answer.value = list.lastChild.innerHTML; //prints last element in list on display
+        if (ms.length == 0) {
+            alert("Nothing is stored in memory");
+        }
+        else {
+            index %= ms.length;
+            answer.value = String(ms[index]);
+            index++;
+        }
     };
     //function memory clear
     var memoryclear = function () {
-        list.innerHTML = '';
-        memoryRegister.forEach(function (element) {
-            while (memoryRegister.length) {
-                memoryRegister.pop();
-            }
-        });
+        ms.splice(0, ms.length);
+        answer.value = "";
     };
     //function for taking input from keyboard
     var myFunction = function (event) {
