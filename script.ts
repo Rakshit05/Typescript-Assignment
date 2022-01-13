@@ -22,7 +22,7 @@ let Answer = function () {
   
     let ansch = answer.value;
     let anschnew = ansch.slice(-1);
-    let numberbefore:any;
+    let numberbefore:string;
     if (isNaN(parseFloat(anschnew))) {
         ansch = ansch.substring(0, ansch.length - 1);
         numberbefore = ansch;
@@ -36,7 +36,7 @@ let Answer = function () {
     let num = numberbefore + '=' + numberafter;
     HistoryRegister.push(num); //pushes the elements in array
     list1.innerHTML = '';
-    HistoryRegister.forEach(function (element:any) {
+    HistoryRegister.forEach(function (element) {
         list1.innerHTML += '<li>' + element + '</li>'; //prints element history block
     });
 };
@@ -165,19 +165,4 @@ let memoryclear = () => {
     answer.value = "";
 }
 
-//function for taking input from keyboard
-let myFunction = function (event:any) {
-    let unicode = event.which;
-    if (unicode >= 48 && unicode <= 57 || unicode == 94 || unicode == 40 || unicode == 41 || unicode == 42 || unicode == 43 || unicode == 45 || unicode == 47) {
-        calculate(event.key);
-    }
-    else {
-    }
-    if (unicode == 13) {
-        Answer();
-    }
-    if (unicode == 46) {
-        del();
-    }
-};
 }

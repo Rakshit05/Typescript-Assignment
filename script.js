@@ -153,19 +153,4 @@ if (typeof document !== 'undefined') {
         ms.splice(0, ms.length);
         answer.value = "";
     };
-    //function for taking input from keyboard
-    var myFunction = function (event) {
-        var unicode = event.which;
-        if (unicode >= 48 && unicode <= 57 || unicode == 94 || unicode == 40 || unicode == 41 || unicode == 42 || unicode == 43 || unicode == 45 || unicode == 47) {
-            calculate(event.key);
-        }
-        else {
-        }
-        if (unicode == 13) {
-            Answer();
-        }
-        if (unicode == 46) {
-            del();
-        }
-    };
 }
