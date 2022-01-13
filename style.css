@@ -1,0 +1,78 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 1em;
+    border: none;
+}
+table tr td input{
+    width: 289px;
+    border: none;
+    text-align: right;
+    float: right;
+    font-weight: bold;
+    font-size: xx-large;
+}
+.dropdown-menu{
+    min-width: 60px;
+}
+.box{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+table tr td {
+    border: hidden;
+}
+
+td:hover{
+    background: #d8d8d8 !important;
+    transition: 0.4s ease-in;
+}
+.bg-light{
+    background-color: transparent !important;
+}
+.ans:hover{
+    background-color: transparent !important;
+}
+
+.equal{
+    background-color: rgb(86, 168, 235) !important;
+}
+.equal:hover{
+    background-color: rgb(117, 200, 238) !important;
+}
+.mx{
+    display: block;
+    text-align: right;
+    margin: 0.5rem 0rem;
+}
+.togg{
+    position: relative;
+}
+.mcss{
+    width: 100%;
+    display: block;
+    position: absolute;
+    height: 55vh;
+    background: white;
+    bottom: 0;
+    z-index: 50;
+    display: none;
+}
+.mem{
+    float: left;
+    background-color: rgb(206, 206, 206);
+}
+.memory-list{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.history-list{
+    display: flex;
+    flex-direction: column-reverse;
+}
+#inptext{
+    color: black !important;
+}
